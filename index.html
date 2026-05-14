@@ -28,7 +28,6 @@
             overflow-x: hidden;
         }
 
-        /* Patró de fons */
         body::before {
             content: "";
             position: fixed;
@@ -83,7 +82,6 @@
             max-width: 750px;
         }
 
-        /* INFO BOX */
         .info-box {
             background: rgba(20, 20, 20, 0.85);
             border: 1px solid var(--dark-green);
@@ -105,7 +103,6 @@
             content: ">";
         }
 
-        /* FEATURES */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -116,11 +113,7 @@
         .feature-card {
             padding: 1.5rem;
             border-left: 3px solid var(--accent-green);
-            background: linear-gradient(
-                90deg,
-                rgba(34, 197, 94, 0.08),
-                transparent
-            );
+            background: linear-gradient(90deg, rgba(34, 197, 94, 0.08), transparent);
             transition: 0.3s ease;
         }
 
@@ -139,7 +132,6 @@
             font-size: 0.95rem;
         }
 
-        /* OBJECTIUS */
         .objectius {
             margin-bottom: 5rem;
         }
@@ -154,7 +146,6 @@
             margin-bottom: 0.8rem;
         }
 
-        /* FOOTER */
         footer {
             padding: 4rem 0;
             border-top: 1px solid #222;
@@ -187,7 +178,6 @@
             letter-spacing: 1px;
         }
 
-        /* ANIMACIÓ */
         @keyframes pulse {
             0% { opacity: 1; }
             50% { opacity: 0.6; }
@@ -201,6 +191,14 @@
             margin-top: 2rem;
             letter-spacing: 2px;
         }
+
+        /* Estil per vídeo */
+        .video-container video {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--dark-green);
+            box-shadow: var(--glow);
+        }
     </style>
 </head>
 
@@ -211,14 +209,11 @@
         <!-- HERO -->
         <header>
             <span class="project-label">Projecte Final de Curs</span>
-
             <h1 class="title">AUTO<br>CHECK-IN</h1>
-
             <p class="description">
                 Un sistema intel·ligent de control d’assistència que permet
                 registrar alumnes automàticament sense perdre temps passant llista.
             </p>
-
             <div class="scroll-indicator">
                 DESPLAÇA'T PER EXPLORAR ↓
             </div>
@@ -227,7 +222,6 @@
         <!-- RESUM -->
         <section class="info-box">
             <h2>Resum del projecte</h2>
-
             <p class="description">
                 Aquest projecte consisteix en el desenvolupament d’un sistema
                 d’auto check-in orientat a la gestió d’assistència d’alumnes
@@ -247,34 +241,22 @@
 
             <div class="feature-card">
                 <h3>Assistència Automàtica</h3>
-                <p>
-                    Els alumnes poden registrar la seva entrada de manera
-                    ràpida i autònoma sense intervenció del professor.
-                </p>
+                <p>Els alumnes poden registrar la seva entrada de manera ràpida i autònoma sense intervenció del professor.</p>
             </div>
 
             <div class="feature-card">
                 <h3>Visualització en Temps Real</h3>
-                <p>
-                    El professor pot consultar l’assistència instantàniament
-                    des de qualsevol dispositiu connectat.
-                </p>
+                <p>El professor pot consultar l’assistència instantàniament des de qualsevol dispositiu connectat.</p>
             </div>
 
             <div class="feature-card">
                 <h3>Base de Dades Segura</h3>
-                <p>
-                    Sistema preparat per emmagatzemar i gestionar les dades
-                    d’assistència de forma eficient i fiable.
-                </p>
+                <p>Sistema preparat per emmagatzemar i gestionar les dades d’assistència de forma eficient i fiable.</p>
             </div>
 
             <div class="feature-card">
                 <h3>Accés Multidispositiu</h3>
-                <p>
-                    Compatible amb ordinadors, tauletes i mòbils per facilitar
-                    l’ús en qualsevol entorn educatiu.
-                </p>
+                <p>Compatible amb ordinadors, tauletes i mòbils per facilitar l’ús en qualsevol entorn educatiu.</p>
             </div>
 
         </section>
@@ -282,7 +264,6 @@
         <!-- OBJECTIUS -->
         <section class="info-box objectius">
             <h2>Objectius</h2>
-
             <ul>
                 <li>Automatitzar el procés de control d’assistència.</li>
                 <li>Reduir errors humans en el registre d’alumnes.</li>
@@ -292,34 +273,8 @@
             </ul>
         </section>
 
-        <!-- FOOTER -->
-        <footer>
-
-            <p style="color: var(--text-gray); margin-bottom: 1rem;">
-                Desenvolupat per
-            </p>
-
-            <div class="team">
-
-                <div class="member">
-                    <span class="role">Desenvolupador</span>
-                    <span class="name">Nom Alumne</span>
-                </div>
-
-                <div class="member">
-                    <span class="role">Tutor / Professor</span>
-                    <span class="name">Nom Tutor</span>
-                </div>
-
-            </div>
-
-            <p style="margin-top: 4rem; font-size: 0.8rem; color: #333;">
-                © 2026 Auto Check-In Project · Tots els drets reservats
-            </p>
-
-        </footer>
-
-    </div>
-
-</body>
-</html>
+        <!-- DEMOSTRACIÓ -->
+        <section class="info-box">
+            <h2>Demostració del Projecte</h2>
+            <p class="description">Aquí podràs veure un vídeo demostratiu del funcionament del sistema d’auto check-in.</p>
+            <div class

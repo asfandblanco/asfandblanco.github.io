@@ -1,196 +1,167 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Check-In | Projecte Final de Curs</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto Check-In | Projecte Final de Curs</title>
 
-    <style>
-        :root {
-            --bg-black: #0a0a0a;
-            --accent-green: #22c55e;
-            --dark-green: #14532d;
-            --text-gray: #a1a1aa;
-            --glow: 0 0 15px rgba(34, 197, 94, 0.4);
-        }
+<style>
+:root {
+    --bg-black: #0a0a0a;
+    --accent-green: #22c55e;
+    --dark-green: #14532d;
+    --text-gray: #a1a1aa;
+    --glow: 0 0 15px rgba(34,197,94,0.4);
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
-        body {
-            background-color: var(--bg-black);
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-            cursor: none; /* Oculta el cursor real */
-        }
+body {
+    background-color: var(--bg-black);
+    color: white;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: none;
+}
 
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background:
-                linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
-            z-index: -1;
-        }
+body::before {
+    content: "";
+    position: fixed; top:0; left:0;
+    width: 100%; height: 100%;
+    background:
+        linear-gradient(rgba(34,197,94,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,197,94,0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: -1;
+}
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-        header {
-            height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+header {
+    height: 85vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+}
 
-        .project-label { color: var(--accent-green); text-transform: uppercase; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 1rem; font-weight: bold; }
+.project-label { color: var(--accent-green); text-transform: uppercase; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 1rem; font-weight: bold; }
 
-        h1.title {
-            font-size: clamp(4rem, 15vw, 8rem);
-            font-weight: 900; text-transform: uppercase; line-height: 0.9; margin-bottom: 2rem; text-shadow: var(--glow);
-        }
+h1.title { font-size: clamp(4rem,15vw,8rem); font-weight: 900; text-transform: uppercase; line-height: 0.9; margin-bottom: 2rem; text-shadow: var(--glow); }
 
-        .description { color: var(--text-gray); font-size: 1.1rem; max-width: 750px; }
+.description { color: var(--text-gray); font-size: 1.1rem; max-width: 750px; }
 
-        .info-box {
-            background: rgba(20, 20, 20, 0.85);
-            border: 1px solid var(--dark-green);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 4rem;
-            box-shadow: var(--glow);
-        }
+.info-box {
+    background: rgba(20,20,20,0.85);
+    border: 1px solid var(--dark-green);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 4rem;
+    box-shadow: var(--glow);
+}
 
-        .info-box h2 { color: var(--accent-green); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
-        .info-box h2::before { content: ">"; }
+.info-box h2 { color: var(--accent-green); margin-bottom: 1rem; display:flex; align-items:center; gap:10px; }
+.info-box h2::before { content: ">"; }
 
-        .features {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem; margin-bottom: 5rem;
-        }
+.features {
+    display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 1.5rem; margin-bottom: 5rem;
+}
 
-        .feature-card {
-            padding: 1.5rem; border-left: 3px solid var(--accent-green);
-            background: linear-gradient(90deg, rgba(34, 197, 94, 0.08), transparent);
-            transition: 0.3s ease;
-        }
+.feature-card {
+    padding: 1.5rem; border-left: 3px solid var(--accent-green);
+    background: linear-gradient(90deg, rgba(34,197,94,0.08), transparent);
+    transition: 0.3s ease;
+}
 
-        .feature-card:hover { transform: translateY(-5px); box-shadow: var(--glow); }
-        .feature-card h3 { margin-bottom: 0.7rem; color: white; }
-        .feature-card p { color: var(--text-gray); font-size: 0.95rem; }
+.feature-card:hover { transform: translateY(-5px); box-shadow: var(--glow); }
+.feature-card h3 { margin-bottom:0.7rem; color:white; }
+.feature-card p { color: var(--text-gray); font-size:0.95rem; }
 
-        .objectius { margin-bottom: 5rem; }
-        .objectius ul { margin-top: 1rem; padding-left: 1.5rem; color: var(--text-gray); }
-        .objectius li { margin-bottom: 0.8rem; }
+.objectius { margin-bottom:5rem; }
+.objectius ul { margin-top:1rem; padding-left:1.5rem; color: var(--text-gray); }
+.objectius li { margin-bottom:0.8rem; }
 
-        .video-container { margin-bottom: 5rem; }
-        .video-container video {
-            width: 100%; border-radius: 12px; border: 1px solid var(--dark-green);
-            box-shadow: var(--glow);
-        }
+.video-container { margin-bottom:5rem; }
+.video-container video { width:100%; border-radius:12px; border:1px solid var(--dark-green); box-shadow: var(--glow); }
 
-        footer {
-            padding: 4rem 0; border-top: 1px solid #222; text-align: center;
-        }
+footer { padding:4rem 0; border-top:1px solid #222; text-align:center; }
+.team { display:flex; justify-content:center; gap:3rem; margin-top:1.5rem; flex-wrap: wrap; }
+.member { text-align:center; }
+.member .role { font-size:0.75rem; color: var(--accent-green); text-transform: uppercase; display:block; margin-bottom:0.3rem; }
+.member .name { font-size:1.4rem; font-weight:600; letter-spacing:1px; }
 
-        .team { display: flex; justify-content: center; gap: 3rem; margin-top: 1.5rem; flex-wrap: wrap; }
-        .member { text-align: center; }
-        .member .role { font-size: 0.75rem; color: var(--accent-green); text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
-        .member .name { font-size: 1.4rem; font-weight: 600; letter-spacing: 1px; }
+.scroll-indicator { animation: pulse 2s infinite; color: var(--text-gray); font-size:0.8rem; margin-top:2rem; letter-spacing:2px; }
+@keyframes pulse {0%{opacity:1;}50%{opacity:0.6;}100%{opacity:1;}}
 
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
-        .scroll-indicator { animation: pulse 2s infinite; color: var(--text-gray); font-size: 0.8rem; margin-top: 2rem; letter-spacing: 2px; }
+/* CURSOR */
+.cursor, .cursor-trail {
+    position: fixed;
+    top:0; left:0;
+    pointer-events: none;
+    border-radius: 50%;
+    background-color: var(--accent-green);
+    z-index: 9999;
+}
+.cursor { width:15px; height:15px; transform:translate(-50%,-50%); box-shadow:0 0 8px var(--accent-green); }
+.cursor-trail { width:10px; height:10px; opacity:0.6; transform:translate(-50%,-50%); transition: top 0.05s, left 0.05s; }
 
-        /* CURSOR */
-        .cursor {
-            position: fixed;
-            top: 0; left: 0;
-            width: 20px; height: 20px;
-            border-radius: 50%;
-            background-color: var(--accent-green);
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 15px var(--accent-green);
-            z-index: 9999;
-        }
-    </style>
+</style>
 </head>
-<!-- CURSOR PERSONALIZADO -->
-<div class="cursor"></div>
-
-<script>
-    const cursor = document.querySelector('.cursor');
-
-    document.addEventListener('mousemove', e => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-
-    // Opcional: efecto de estela
-    let trail = [];
-    const trailLength = 8;
-
-    document.addEventListener('mousemove', e => {
-        trail.push({ x: e.clientX, y: e.clientY });
-        if(trail.length > trailLength) trail.shift();
-
-        cursor.style.boxShadow = trail.map(p => `${p.x}px ${p.y}px 10px rgba(34,197,94,0.4)`).join(', ');
-    });
-</script>
 <body>
 
-    <div class="container">
-        <!-- HERO -->
-        <header>
-            <span class="project-label">Projecte Final de Curs</span>
-            <h1 class="title">AUTO<br>CHECK-IN</h1>
-            <p class="description">
-                Un sistema intel·ligent de control d’assistència que permet registrar alumnes automàticament sense perdre temps passant llista.
-            </p>
-            <div class="scroll-indicator">DESPLAÇA'T PER EXPLORAR ↓</div>
-        </header>
+<div class="container">
+    <!-- HERO -->
+    <header>
+        <span class="project-label">Projecte Final de Curs</span>
+        <h1 class="title">AUTO<br>CHECK-IN</h1>
+        <p class="description">
+            Sistema intel·ligent de control d’assistència que registra alumnes automàticament sense perdre temps passant llista.
+        </p>
+        <div class="scroll-indicator">DESPLAÇA'T PER EXPLORAR ↓</div>
+    </header>
 
-        <!-- RESUM -->
-        <section class="info-box">
-            <h2>Resum del projecte</h2>
-            <p class="description">
-                Aquest projecte consisteix en el desenvolupament d’un sistema d’auto check-in orientat a la gestió d’assistència d’alumnes en entorns educatius. El sistema permet que els estudiants registrin la seva assistència de manera autònoma i fiable, reduint el temps que el professor dedica a passar llista manualment i evitant possibles errors humans.<br><br>
-                A més, el sistema està pensat per funcionar en diferents dispositius i oferir visualització en temps real de les dades, facilitant també la gestió de faltes justificades.
-            </p>
-        </section>
+    <!-- RESUM -->
+    <section class="info-box">
+        <h2>Resum del projecte</h2>
+        <p class="description">
+            Desenvolupament d’un sistema d’auto check-in per gestionar l’assistència dels alumnes. Els estudiants registren la seva assistència de manera autònoma i fiable, reduint el temps que el professor dedica a passar llista manualment i evitant errors humans. Funciona en múltiples dispositius i ofereix visualització en temps real, incloent la gestió de faltes justificades.
+        </p>
+    </section>
 
-        <!-- CARACTERÍSTIQUES -->
-        <section class="features">
-            <div class="feature-card">
-                <h3>Assistència Automàtica</h3>
-                <p>Els alumnes poden registrar la seva entrada de manera ràpida i autònoma sense intervenció del professor.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Visualització en Temps Real</h3>
-                <p>El professor pot consultar l’assistència instantàniament des de qualsevol dispositiu connectat.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Base de Dades Segura</h3>
-                <p>Sistema preparat per emmagatzemar i gestionar les dades d’assistència de forma eficient i fiable.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Accés Multidispositiu</h3>
-                <p>Compatible amb ordinadors, tauletes i mòbils per facilitar l’ús en qualsevol entorn educatiu.</p>
-            </div>
-        </section>
+    <!-- CARACTERÍSTIQUES -->
+    <section class="features">
+        <div class="feature-card"><h3>Assistència Automàtica</h3><p>Registre ràpid i autònom sense intervenció del professor.</p></div>
+        <div class="feature-card"><h3>Visualització en Temps Real</h3><p>Consultes d’assistència instantànies des de qualsevol dispositiu.</p></div>
+        <div class="feature-card"><h3>Base de Dades Segura</h3><p>Emmagatzematge eficient i fiable de les dades.</p></div>
+        <div class="feature-card"><h3>Accés Multidispositiu</h3><p>Compatible amb ordinadors, tauletes i mòbils.</p></div>
+    </section>
 
-        <!-- OBJECTIUS -->
-        <section class="info-box objectius">
-            <h2>Objectius</h2>
-            <ul>
-                <li>Automatitzar el procés de control d’assistència.</li>
-                <li>Reduir errors
+    <!-- OBJECTIUS -->
+    <section class="info-box objectius">
+        <h2>Objectius</h2>
+        <ul>
+            <li>Automatitzar el procés de control d’assistència.</li>
+            <li>Reduir errors humans en el registre.</li>
+            <li>Crear una plataforma web funcional i intuïtiva.</li>
+            <li>Permetre modificació de faltes justificades.</li>
+            <li>Integrar maquinari i programari en un únic sistema.</li>
+        </ul>
+    </section>
+
+    <!-- VIDEO DEMO -->
+    <section class="video-container info-box">
+        <h2>Demo del Projecte</h2>
+        <video src="assets/demo.mp4" controls></video>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p style="color: var(--text-gray); margin-bottom: 1rem;">Desenvolupat per</p>
+        <div class="team">
+            <div class="member"><span class="role">Desenvolupadors</span><span class="name">Asfand Muhammad i Rida Zefri</span></div>
+            <div class="member"><span class="role">Tutor / Professor</span><span class="name">David Delgado</span></div>
+        </div>
+        <p style="margin-top:4rem; font-size:0.8rem; color:#333;">© 2026 Auto Check-In Project · Tots els drets reservats</p>
+    </footer>
+</div>
+
+<!-- CURSOR PERSONALITZAT -->
+<div class="cursor"></div>

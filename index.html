@@ -101,7 +101,7 @@ footer { padding:4rem 0; border-top:1px solid #222; text-align:center; }
     z-index: 9999;
 }
 .cursor { width:15px; height:15px; transform:translate(-50%,-50%); box-shadow:0 0 8px var(--accent-green); }
-.cursor-trail { width:10px; height:10px; opacity:0.6; transform:translate(-50%,-50%); transition: top 0.05s, left 0.05s; }
+.cursor-trail { width:10px; height:10px; opacity:0.6; transform:translate(-50%,-50%); }
 
 </style>
 </head>
@@ -113,7 +113,7 @@ footer { padding:4rem 0; border-top:1px solid #222; text-align:center; }
         <span class="project-label">Projecte Final de Curs</span>
         <h1 class="title">AUTO<br>CHECK-IN</h1>
         <p class="description">
-            Sistema intel·ligent de control d’assistència que registra alumnes automàticament sense perdre temps passant llista.
+            Sistema intel·ligent de control d'assistència que registra alumnes automàticament sense perdre temps passant llista.
         </p>
         <div class="scroll-indicator">DESPLAÇA'T PER EXPLORAR ↓</div>
     </header>
@@ -122,14 +122,14 @@ footer { padding:4rem 0; border-top:1px solid #222; text-align:center; }
     <section class="info-box">
         <h2>Resum del projecte</h2>
         <p class="description">
-            Desenvolupament d’un sistema d’auto check-in per gestionar l’assistència dels alumnes. Els estudiants registren la seva assistència de manera autònoma i fiable, reduint el temps que el professor dedica a passar llista manualment i evitant errors humans. Funciona en múltiples dispositius i ofereix visualització en temps real, incloent la gestió de faltes justificades.
+            Desenvolupament d'un sistema d'auto check-in per gestionar l'assistència dels alumnes. Els estudiants registren la seva assistència de manera autònoma i fiable, reduint el temps que el professor dedica a passar llista manualment i evitant errors humans. Funciona en múltiples dispositius i ofereix visualització en temps real, incloent la gestió de faltes justificades.
         </p>
     </section>
 
     <!-- CARACTERÍSTIQUES -->
     <section class="features">
         <div class="feature-card"><h3>Assistència Automàtica</h3><p>Registre ràpid i autònom sense intervenció del professor.</p></div>
-        <div class="feature-card"><h3>Visualització en Temps Real</h3><p>Consultes d’assistència instantànies des de qualsevol dispositiu.</p></div>
+        <div class="feature-card"><h3>Visualització en Temps Real</h3><p>Consultes d'assistència instantànies des de qualsevol dispositiu.</p></div>
         <div class="feature-card"><h3>Base de Dades Segura</h3><p>Emmagatzematge eficient i fiable de les dades.</p></div>
         <div class="feature-card"><h3>Accés Multidispositiu</h3><p>Compatible amb ordinadors, tauletes i mòbils.</p></div>
     </section>
@@ -138,7 +138,7 @@ footer { padding:4rem 0; border-top:1px solid #222; text-align:center; }
     <section class="info-box objectius">
         <h2>Objectius</h2>
         <ul>
-            <li>Automatitzar el procés de control d’assistència.</li>
+            <li>Automatitzar el procés de control d'assistència.</li>
             <li>Reduir errors humans en el registre.</li>
             <li>Crear una plataforma web funcional i intuïtiva.</li>
             <li>Permetre modificació de faltes justificades.</li>
@@ -165,3 +165,30 @@ footer { padding:4rem 0; border-top:1px solid #222; text-align:center; }
 
 <!-- CURSOR PERSONALITZAT -->
 <div class="cursor"></div>
+<div class="cursor-trail"></div>
+
+<script>
+    const cursor = document.querySelector('.cursor');
+    const trail  = document.querySelector('.cursor-trail');
+    let mx = 0, my = 0;
+
+    document.addEventListener('mousemove', e => {
+        mx = e.clientX;
+        my = e.clientY;
+        cursor.style.left = mx + 'px';
+        cursor.style.top  = my + 'px';
+    });
+
+    let tx = 0, ty = 0;
+    function animate() {
+        tx += (mx - tx) * 0.18;
+        ty += (my - ty) * 0.18;
+        trail.style.left = tx + 'px';
+        trail.style.top  = ty + 'px';
+        requestAnimationFrame(animate);
+    }
+    animate();
+</script>
+
+</body>
+</html>
